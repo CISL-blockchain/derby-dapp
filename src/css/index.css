@@ -1,0 +1,17 @@
+
+.hotel-info {
+    position: relative;
+    top: 30px;
+}
+
+#date_picker {
+    margin-top: 60px;
+}
+
+.img-thumbnail {
+    width: 150px;
+}
+
+.table td {
+    vertical-align: middle;
+}

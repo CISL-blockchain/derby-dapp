@@ -1,0 +1,24 @@
+[
+  {
+    "name": "锦江之星品尚(上海张江高科园区酒店)",
+    "location": "上海浦东新区华佗路800号 (浦东张江)",
+    "imageUrl":"../images/hotel.jpg",
+    "roomType": [
+      {
+        "type": "标准间",
+        "imageUrl": "../images/standardRoom.jpg",
+        "price": "270"
+      },
+      {
+        "type": "双人房",
+        "imageUrl": "../images/doubleRoom.jpg",
+        "price": "298"
+      },
+      {
+        "type": "商务房",
+        "imageUrl": "../images/businessRoom.jpg",
+        "price": "350"
+      }
+    ]
+  }
+]

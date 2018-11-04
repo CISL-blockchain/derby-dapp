@@ -10,6 +10,18 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/web3.min.js"></script>
+      <script src="js/truffle-contract.js"></script>
+      <script src="js/app.js"></script>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/index.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,14 +30,54 @@
     <![endif]-->
   </head>
   <body>
-    
+      <!-- 导航栏 -->
+      <nav class="navbar navbar-dark bg-dark shadow-sm">
+          <!-- Navbar content -->
+          <div class="container d-flex justify-content-between">
+              <strong class="navbar-brand mb-0 h1" style="line-height: 75px;">TravelDapp - Change your travel</strong>
+            <a class="btn btn-success" href="./user.html" role="button" id="my_account">我的账户</a>
+          </div>
+      </nav>
+      <!-- 导航栏结束 -->
+     
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/web3.min.js"></script>
-    <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
+      <div class="container justify-content-between">
+          <div class="hotel-info">
+                <h5 id="hotel_name"></h5>
+                <p id="hotel_location"></p>
+              </div>            
+          </div>
+      </div>
+
+      <div class="container justify-content-between" id="date_picker">
+          入住日期: <input id="startDate" width="276" />
+          离店日期: <input id="endDate" width="276" />
+          <div class="alert alert-danger" role="alert" style="margin-top:30px;">
+            请选择入住时间和离开时间！
+          </div>
+    
+      </div>
+
+
+
+      <div class="container justify-content-between" >
+          <table class="table" style="margin-top:30px;">
+              <thead>
+                <tr>
+                  <th scope="col">房型图片</th>
+                  <th scope="col">房型</th>
+                  <th scope="col">价格</th>
+                  <th scope="col">预定</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+      </div>
+
+     
+
+
+  
   </body>
 </html>
