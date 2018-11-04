@@ -1,6 +1,7 @@
 pragma solidity ^0.4.24;
 
-contract Migrations {
+contract Travel {
+
     // 酒店房间
     struct Room {
         string hotel;   // 酒店名
@@ -20,5 +21,19 @@ contract Migrations {
         string state;       // 表明订单状态：init/comfirmed
     }
 
+    struct User {
+        address userAddr;
+        string userName;
+        UserOrder[] orders;
+    }
 
+    mapping (address=>User) userInfo;
+
+    function changeUserName(string _name) public {
+        userInfo[msg.sender].userName = _name;
+    }
+
+    function getUserName() public view returns (string) {
+        return userInfo[msg.sender].userName;
+    }
 }

@@ -18,6 +18,11 @@
         "type": "商务房",
         "imageUrl": "../images/businessRoom.jpg",
         "price": "350"
+      },
+      {
+        "type": "总统套房",
+        "imageUrl": "../images/superRoom.jpg",
+        "price": "1350"
       }
     ]
   }

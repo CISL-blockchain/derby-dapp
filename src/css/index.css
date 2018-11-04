@@ -15,3 +15,42 @@
 .table td {
     vertical-align: middle;
 }
+
+body { padding-top: 120px; }
+
+#OTA {
+    float: right;
+}
+
+#OTAImg {
+    width: 250px;
+}
+
+/* 调整一下表格项的位置 对齐 */
+.room-info:nth-child(1){
+    padding-left: 50px;
+} 
+
+.room-info:nth-child(2){
+    padding-left: 25px;
+} 
+
+.room-info:nth-child(3){
+    padding-left: 18px;
+} 
+
+.room-info:nth-child(4){
+    padding-left: 30px;
+} 
+
+/* 加粗酒店名字 */
+#hotel_name {
+    font-weight: 600;
+}
+
+
+.Zi {
+    margin-right: 10px;
+    margin-bottom: 3px;
+}
+
