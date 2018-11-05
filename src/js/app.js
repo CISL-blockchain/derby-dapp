@@ -2,8 +2,6 @@ App = {
   web3Provider: null,
   contracts: {},
 
-  
-
   init: async function () {
     // 初始化时间选择器
     Util.date.initDatepicker();

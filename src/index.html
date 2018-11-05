@@ -1,95 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Travel Dapp</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Travel Dapp</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
 
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/web3.min.js"></script>
-      <script src="js/truffle-contract.js"></script>
-      <script src="js/util.js"></script>
-      <script src="js/app.js"></script>
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/index.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-      <!-- 导航栏 -->
-      <nav class="navbar navbar-dark bg-dark fixed-top">
-          <!-- Navbar content -->
-          <div class="container d-flex justify-content-between">
-              <strong class="navbar-brand mb-0 h1" style="line-height: 75px;">TravelDapp - Change your travel</strong>
-            <div class="dropdown" id="my_account">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               我的账户
-              </button>
-               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <p class="dropdown-item" id="userName">dwqd</p>
-                <a class="dropdown-item" href="./user.html"><svg class="Zi Zi--Profile" fill="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M15.417 12.923c-.376.653-.837 1.281-.763 1.863.292 2.273 5.562 1.77 6.78 3.048.566.595.566.664.566 4.164-6.611-.07-13.363 0-20 0 .027-3.5 0-3.478.62-4.164 1.303-1.44 6.581-.715 6.78-3.133.045-.545-.38-1.114-.763-1.778C6.511 9.233 5.697 2 12 2s5.422 7.443 3.417 10.923z" fill-rule="evenodd"></path></svg>我的主页</a>
-                <a class="dropdown-item" href="./userName.html"><svg class="Zi Zi--Settings" fill="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M20.868 17.185a.896.896 0 0 1-.452.137c-.123 0-1.397-.26-1.617-.233-1.354.014-1.78 1.276-1.835 1.742-.055.453 0 .892.191 1.303a.8.8 0 0 1-.068.851C16.224 21.877 14.922 22 14.73 22a.548.548 0 0 1-.356-.151c-.11-.096-.685-1.138-1.069-1.468-1.304-.955-2.247-.329-2.63 0-.398.33-.672.7-.836 1.125a.632.632 0 0 1-.329.37c-1.354.426-2.918-.919-3.014-1.056a.564.564 0 0 1-.123-.356c-.014-.138.383-1.276.342-1.688-.342-1.9-1.836-1.687-2.096-1.673a3.192 3.192 0 0 0-.918.178.873.873 0 0 1-.59-.055c-.887-.462-1.136-2.332-1.109-2.51.055-.315.192-.521.438-.604.425-.164.809-.452 1.151-.85.931-1.262.343-2.25 0-2.634-.342-.356-.726-.645-1.15-.809-.138-.041-.234-.151-.33-.316-.38-1.434.613-2.552.867-2.77.255-.22.6-.055.723 0 .425.164.877.219 1.343.15C6.7 6.636 6.784 5.141 6.81 4.908c.014-.247-.11-1.29-.137-1.4a.488.488 0 0 1 .027-.315C7.317 2.178 9.071 2 9.222 2a.56.56 0 0 1 .439.178c.11.124.63 1.111 1 1.4.4.338 1.583.83 2.59.013.397-.274.959-1.29 1.082-1.413A.55.55 0 0 1 14.717 2c1.56 0 2.329 1.029 2.438 1.22a.458.458 0 0 1 .069.371c-.028.151-.329 1.152-.26 1.605.365 1.537 1.383 1.742 1.89 1.783.493.028 1.644-.356 1.809-.343a.63.63 0 0 1 .424.206c.535.31.85 1.715.905 2.14.027.233-.014.439-.11.562-.11.138-1.165.714-1.48 1.112-.855.982-.342 2.25-.068 2.606.26.37 1.22.905 1.288.96.15.137.26.302.315.494.146 1.413-.89 2.387-1.069 2.47zm-8.905-.535c.644 0 1.246-.123 1.822-.356a4.576 4.576 0 0 0 1.493-1.016 4.694 4.694 0 0 0 1-1.495c.247-.562.357-1.18.357-1.81 0-.659-.11-1.262-.356-1.825a4.79 4.79 0 0 0-1-1.481 4.542 4.542 0 0 0-1.494-1.002 4.796 4.796 0 0 0-3.631 0 4.627 4.627 0 0 0-1.48 1.002c-.424.425-.767.919-1 1.481a4.479 4.479 0 0 0-.37 1.825c0 .644.124 1.248.37 1.81a4.62 4.62 0 0 0 1 1.495c.425.426.918.768 1.48 1.016a4.677 4.677 0 0 0 1.809.356z" fill-rule="evenodd"></path></svg>我的设置</a>
-               </div>
-              </div>
-          </div>
-      </nav>
-      <!-- 导航栏结束 -->
-     
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/app.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/index.css">
 
-      <div class="container justify-content-between">
-          <div class="hotel-info">
-                <h5 id="hotel_name"></h5>
-                <p id="hotel_location"></p>
-          </div>            
-          <div id="OTA">
-            <img src="./images/ctrip.jpg" alt="" id="OTAImg" data-OTA="携程">
-          </div>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <!-- Navbar content -->
+    <div class="container d-flex justify-content-between">
+      <strong class="navbar-brand mb-0 h1" style="line-height: 75px;">TravelDapp - Change your travel</strong>
+      <div class="dropdown" id="my_account">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          我的账户
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <p class="dropdown-item" id="userName">dwqd</p>
+          <a class="dropdown-item" href="./index.html"><svg class="Zi" width="16px" height="15.97px" viewBox="0 0 1026 1024"
+              version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#000000" d="M755.2 908.8c0 64 51.2 108.8 108.8 108.8 64 0 108.8-51.2 108.8-108.8 0-64-51.2-108.8-108.8-108.8C806.4 800 755.2 851.2 755.2 908.8zM294.4 908.8c0 64 51.2 108.8 108.8 108.8 64 0 108.8-51.2 108.8-108.8 0-64-51.2-108.8-108.8-108.8C345.6 800 294.4 851.2 294.4 908.8L294.4 908.8zM448 505.6c-19.2 0-32 19.2-32 38.4 0 19.2 19.2 32 38.4 32L947.2 512c12.8 0 25.6-12.8 25.6-25.6l51.2-256C1030.4 211.2 1017.6 192 992 192L192 192 128 19.2C128 6.4 115.2 0 102.4 0l-64 0C12.8 0 0 12.8 0 32 0 51.2 12.8 64 32 64l44.8 0 224 640c6.4 12.8 19.2 19.2 32 19.2l620.8 0c19.2 0 32-12.8 32-32 0-19.2-12.8-32-32-32L352 659.2 211.2 256c140.8 0 742.4 0 742.4 0-19.2 83.2-38.4 192-38.4 192L448 505.6z" /></svg>预定房间</a>
+          <a class="dropdown-item" href="./user.html"><svg class="Zi Zi--Profile" fill="currentColor" viewBox="0 0 24 24"
+              width="16" height="16">
+              <path d="M15.417 12.923c-.376.653-.837 1.281-.763 1.863.292 2.273 5.562 1.77 6.78 3.048.566.595.566.664.566 4.164-6.611-.07-13.363 0-20 0 .027-3.5 0-3.478.62-4.164 1.303-1.44 6.581-.715 6.78-3.133.045-.545-.38-1.114-.763-1.778C6.511 9.233 5.697 2 12 2s5.422 7.443 3.417 10.923z"
+                fill-rule="evenodd"></path>
+            </svg>我的主页</a>
+          <a class="dropdown-item" href="./userName.html"><svg class="Zi Zi--Settings" fill="currentColor" viewBox="0 0 24 24"
+              width="16" height="16">
+              <path d="M20.868 17.185a.896.896 0 0 1-.452.137c-.123 0-1.397-.26-1.617-.233-1.354.014-1.78 1.276-1.835 1.742-.055.453 0 .892.191 1.303a.8.8 0 0 1-.068.851C16.224 21.877 14.922 22 14.73 22a.548.548 0 0 1-.356-.151c-.11-.096-.685-1.138-1.069-1.468-1.304-.955-2.247-.329-2.63 0-.398.33-.672.7-.836 1.125a.632.632 0 0 1-.329.37c-1.354.426-2.918-.919-3.014-1.056a.564.564 0 0 1-.123-.356c-.014-.138.383-1.276.342-1.688-.342-1.9-1.836-1.687-2.096-1.673a3.192 3.192 0 0 0-.918.178.873.873 0 0 1-.59-.055c-.887-.462-1.136-2.332-1.109-2.51.055-.315.192-.521.438-.604.425-.164.809-.452 1.151-.85.931-1.262.343-2.25 0-2.634-.342-.356-.726-.645-1.15-.809-.138-.041-.234-.151-.33-.316-.38-1.434.613-2.552.867-2.77.255-.22.6-.055.723 0 .425.164.877.219 1.343.15C6.7 6.636 6.784 5.141 6.81 4.908c.014-.247-.11-1.29-.137-1.4a.488.488 0 0 1 .027-.315C7.317 2.178 9.071 2 9.222 2a.56.56 0 0 1 .439.178c.11.124.63 1.111 1 1.4.4.338 1.583.83 2.59.013.397-.274.959-1.29 1.082-1.413A.55.55 0 0 1 14.717 2c1.56 0 2.329 1.029 2.438 1.22a.458.458 0 0 1 .069.371c-.028.151-.329 1.152-.26 1.605.365 1.537 1.383 1.742 1.89 1.783.493.028 1.644-.356 1.809-.343a.63.63 0 0 1 .424.206c.535.31.85 1.715.905 2.14.027.233-.014.439-.11.562-.11.138-1.165.714-1.48 1.112-.855.982-.342 2.25-.068 2.606.26.37 1.22.905 1.288.96.15.137.26.302.315.494.146 1.413-.89 2.387-1.069 2.47zm-8.905-.535c.644 0 1.246-.123 1.822-.356a4.576 4.576 0 0 0 1.493-1.016 4.694 4.694 0 0 0 1-1.495c.247-.562.357-1.18.357-1.81 0-.659-.11-1.262-.356-1.825a4.79 4.79 0 0 0-1-1.481 4.542 4.542 0 0 0-1.494-1.002 4.796 4.796 0 0 0-3.631 0 4.627 4.627 0 0 0-1.48 1.002c-.424.425-.767.919-1 1.481a4.479 4.479 0 0 0-.37 1.825c0 .644.124 1.248.37 1.81a4.62 4.62 0 0 0 1 1.495c.425.426.918.768 1.48 1.016a4.677 4.677 0 0 0 1.809.356z"
+                fill-rule="evenodd"></path>
+            </svg>我的设置</a>
+        </div>
       </div>
-
-      <div class="container justify-content-between" id="date_picker">
-          入住日期: <input id="startDate" width="276" />
-          离店日期: <input id="endDate" width="276" />
-          <div class="alert alert-danger" role="alert" style="margin-top:30px;display: none;">
-            <a href="#" class="close" onclick="$('.alert').hide()">
-              &times;
-            </a>
-            请选择入住时间和离开时间！
-          </div>
-      </div>
-
-      <div class="container justify-content-between" >
-          <table class="table" style="margin-top:30px;" id="rooms">
-              <thead>
-                <tr>
-                  <th class="room-info" scope="col">房型图片</th>
-                  <th class="room-info" scope="col">房型</th>
-                  <th class="room-info" scope="col">价格</th>
-                  <th class="room-info" scope="col">预定</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-      </div>
-
-     
+    </div>
+  </nav>
+  <!-- 导航栏结束 -->
 
 
-  
-  </body>
+  <div class="container justify-content-between">
+    <div class="hotel-info">
+      <h5 id="hotel_name"></h5>
+      <p id="hotel_location"></p>
+    </div>
+    <div id="OTA">
+      <img src="./images/ctrip.jpg" alt="" id="OTAImg" data-OTA="携程">
+    </div>
+  </div>
+
+  <div class="container justify-content-between" id="date_picker">
+    入住日期: <input id="startDate" width="276" />
+    离店日期: <input id="endDate" width="276" />
+    <div class="alert alert-danger" role="alert" style="margin-top:30px;display: none;">
+      <a href="#" class="close" onclick="$('.alert').hide()">
+        &times;
+      </a>
+      请选择入住时间和离开时间！
+    </div>
+  </div>
+
+  <div class="container justify-content-between">
+    <table class="table" style="margin-top:30px;" id="rooms">
+      <thead>
+        <tr>
+          <th class="room-info" scope="col">房型图片</th>
+          <th class="room-info" scope="col">房型</th>
+          <th class="room-info" scope="col">价格</th>
+          <th class="room-info" scope="col">预定</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</body>
 </html>
