@@ -1604,10 +1604,10 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x60ad6e1940ac07efb0903a65854db08fc782fb72",
-      "transactionHash": "0x3257b6928896ca6fa787b35dd0728b81912a9f571212b0e9b1cc418f10508d7b"
+      "address": "0xbb1848564435edf4a0b81d851e882874b60d6d94",
+      "transactionHash": "0xa1e8b1f0b61046f8a3fcdf56939c0358572c314c2019568becea253304af3254"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-11-04T12:45:58.569Z"
+  "updatedAt": "2018-11-05T02:15:55.389Z"
 }

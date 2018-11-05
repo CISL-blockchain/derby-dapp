@@ -2,12 +2,11 @@ App = {
     web3Provider: null,
     contracts: {},
     account: "",
-  
-  
+
     init: function() {
       return App.initWeb3();
     },
-  
+    
     initWeb3: function() {
        // Is there an injected web3 instance?
       if (typeof web3 !== 'undefined') {
