@@ -1,7 +1,7 @@
 # Travel-dapp
 A dapp for the flow of data in the Travel.
 ## Usage
-you should have truffle、git、ganache、node.js、metamask installed.
+ou should have truffle、git、ganache、node.js、metamask installed.
 <hr>
 1. Clone the repo.
 
@@ -22,7 +22,7 @@ npm install
 truffle compile
 truffle migrate --reset
 ```
-5. start your server to see the front-end page.
+5. Start your server to see the front-end page.
 ```
 npm run dev
 ```
