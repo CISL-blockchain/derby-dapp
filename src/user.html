@@ -9,6 +9,7 @@
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/user.css">
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -52,6 +53,7 @@
 
 
   <div class="container justify-content-between">
+
     <div class="card">
       <h6 class="card-header font-weight-bold">用户信息</h6>
       <div class="card-body">
@@ -61,17 +63,26 @@
         <p id="rawName"></p>
       </div>
     </div>
+
     <div class="accordion" id="accordionExample">
-      <div class="card" style="display: none;" id="user_order">
+
+    </div>
+  </div>
+
+  <div id="user_order_template" style="display:none;">
+      <div class="card">
+
         <div class="card-header" id="headinge">
           <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse"
+            <button class="btn btn-link collapsed font-weight-bold" type="button" data-toggle="collapse" data-target="#collapse"
               aria-expanded="false" aria-controls="collapse">
             </button>
           </h5>
         </div>
+ 
+
         <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordionExample">
-          <div class="card-body">
+          <div class="card-body" id="order_content">
             <span class="entry font-weight-bold">订单状态: </span>
             <p id="state"></p>
             <span class="entry font-weight-bold">房间类型: </span>
@@ -86,13 +97,12 @@
             <p id="order_time"></p>
             <span class="entry font-weight-bold">订购平台: </span>
             <p id="OTA"></p>
-            
           </div>
         </div>
-      </div>
-    </div>
 
+      </div>
   </div>
+
 
 </body>
 

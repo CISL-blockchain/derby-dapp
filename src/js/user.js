@@ -60,27 +60,40 @@ App = {
 
   // 渲染订单
   renderOrders: async function (instance) {
+
     let ordersCount = await instance.getUserOrdersCount.call();
     // 智能合约返回的是big number类型，用tonumber转化为数字
     ordersCount = ordersCount.toNumber();
+    
     
     let orders = $('#accordionExample');
 
     // 渲染每个订单
     for (let i = 0; i < ordersCount; i++) {
-
-        let order = $('#userOrder');
-
-        let orderInfo = await instance.getUserOrdersInfo(i);
-        let orderRoom = await instance.getUserOrdersRoom(i);
-
-        order.find('button').text(orderRoom[0]);
-        order.find('')
-
+      let orderInfo = await instance.getUserOrdersInfo(i);
+      let orderRoom = await instance.getUserOrdersRoom(i);
+    
+        let order = $('#user_order_template');
+    
+        order.find('.card-header').attr('id', 'heading' + i);
+        order.find('.collapse').attr('aria-labelledby', 'heading' + i);
+        order.find('.collapse').attr('id', 'collapse' + i);
 
         
-        order.show();
-        orders.append(order);
+
+        order.find('button').text(orderRoom[0]).attr("data-target", '#collapse' + i);
+      
+
+        order.find('#order_time').text(new Date(orderInfo[0].toNumber() * 1000).toLocaleString());
+        order.find('#OTA').text(orderInfo[1]);
+        order.find('#state').text(orderInfo[2]);
+
+        order.find('#room_type').text(orderRoom[1]);
+        order.find('#from_date').text(orderRoom[2]);
+        order.find('#to_date').text(orderRoom[3]);
+        order.find('#total_price').text(orderRoom[4].toNumber());
+        
+        orders.append(order.html());
     }
   }
 

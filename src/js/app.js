@@ -105,6 +105,7 @@ App = {
     let order = App.getCurrentOrder(event);
 
     if (Util.date.isDateFilled()) {
+      alert("订购成功");
     } else {
       $('.alert').show();
     }

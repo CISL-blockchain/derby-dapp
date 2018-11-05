@@ -11,7 +11,6 @@ contract Travel {
         uint totalPrice;    // 总价格     
     }
 
-
     // 用户交易
     struct UserOrder {
         uint time;          // 时间戳 unix
@@ -29,9 +28,9 @@ contract Travel {
 
     constructor() {
     
-        Room memory room = Room("dwqdw","dwqdwq","dwqd","dwqd", 120);
-        userInfo[msg.sender].orders.push( UserOrder(now, room, "dqw", "qwd"));
-        userInfo[msg.sender].orders.push( UserOrder(now, room, "dqw", "qwd"));
+        Room memory room = Room("锦江之星","标准间","2018-11-3","2018-11-5", 1200);
+        userInfo[msg.sender].orders.push( UserOrder(now, room, "携程", "init"));
+        userInfo[msg.sender].orders.push( UserOrder(now, room, "dqw", "init"));
     }
 
     // 改变用户姓名
@@ -64,11 +63,11 @@ contract Travel {
 
     // 得到用户订单的酒店信息
     function getUserOrdersRoom(uint _idx) public view returns (string, string, string, string, uint){
-        string storage _hotel =  userInfo[msg.sender].orders[_idx].room.hotel;
-        string storage _roomType =  userInfo[msg.sender].orders[_idx].room.roomType;
-        string storage _fromDate =  userInfo[msg.sender].orders[_idx].room.fromDate;
-        string storage _toDate =  userInfo[msg.sender].orders[_idx].room.toDate;
-        uint _totalPrice =  userInfo[msg.sender].orders[_idx].room.totalPrice;
+        string storage _hotel = userInfo[msg.sender].orders[_idx].room.hotel;
+        string storage _roomType = userInfo[msg.sender].orders[_idx].room.roomType;
+        string storage _fromDate = userInfo[msg.sender].orders[_idx].room.fromDate;
+        string storage _toDate = userInfo[msg.sender].orders[_idx].room.toDate;
+        uint _totalPrice = userInfo[msg.sender].orders[_idx].room.totalPrice;
 
          return (_hotel, _roomType, _fromDate, _toDate, _totalPrice);
     }
