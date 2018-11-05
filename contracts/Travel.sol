@@ -26,13 +26,6 @@ contract Travel {
 
     mapping (address=>User) public userInfo;
 
-    constructor() {
-    
-        Room memory room = Room("锦江之星","标准间","2018-11-3","2018-11-5", 1200);
-        userInfo[msg.sender].orders.push( UserOrder(now, room, "携程", "init"));
-        userInfo[msg.sender].orders.push( UserOrder(now, room, "dqw", "init"));
-    }
-
     // 改变用户姓名
     function changeUserName(string _name) public {
         userInfo[msg.sender].userName = _name;

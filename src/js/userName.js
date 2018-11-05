@@ -37,16 +37,22 @@ App = {
       event.preventDefault();
       App.setName();
     });
+    $('#final_order').click(function(event) {
+      event.preventDefault();
+      App.finalName();
+    });
   },
 
-  setName: async function () {
-    console.log("设置用户名");
+  setName: function () {
+    $('#myModal').modal('show');
+  },
+
+  finalName: async function () {
     let newName = $('#newName').val();
     let instance = await App.contracts.Travel.deployed();
     await instance.changeUserName(newName);
     console.log("设置新用户名成功");
     window.location.reload();
-    
   },
 
   renderName: async function () {

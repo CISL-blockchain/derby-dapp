@@ -92,6 +92,7 @@ App = {
         order.find('#from_date').text(orderRoom[2]);
         order.find('#to_date').text(orderRoom[3]);
         order.find('#total_price').text(orderRoom[4].toNumber());
+
         
         orders.append(order.html());
     }

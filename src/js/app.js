@@ -1,6 +1,7 @@
 App = {
   web3Provider: null,
   contracts: {},
+  order: {},
 
   init: async function () {
     // 初始化时间选择器
@@ -32,7 +33,10 @@ App = {
       let roomTypePrice = $('<td></td>').text("¥" + roomType[i].price);
       oneType.append(roomTypePrice);
       let roomTypeBtn = $('<td></td>');
-      roomTypeBtn.append($('<button>').text("预定").attr("class", "btn btn-success order-btn"));
+      roomTypeBtn.append($('<button>').text("预定").attr(
+        "class", "btn btn-success order-btn"
+      ));
+
       oneType.append(roomTypeBtn);
       rooms.append(oneType);
     }
@@ -79,6 +83,7 @@ App = {
   // 为订购按钮绑定点击事件
   bindEvents: function () {
     $('.order-btn').click(App.handleOrder);
+    $('#finalOrder').click(App.finalOrder);
     console.log("绑定事件完成");
   },
 
@@ -88,27 +93,42 @@ App = {
 
     let tds = $(event.target).parent().prevAll();
     order.roomType = $(tds[1]).text();
+    console.log($(tds[0]).text());
     order.roomPrice = $(tds[0]).text().substring(1);
     order.hotelName = $('#hotel_name').text();
     order.OTA = $('#OTAImg').attr("data-OTA");
     order.fromDate = $('#startDate').val();
     order.toDate = $('#endDate').val();
 
+    
+
     // 住的天数乘以单价得到总价格
     order.price = Util.date.getDateDifference(order.fromDate, order.toDate) * order.roomPrice;
+    return order;
   },
 
   // 处理订购函数
-  handleOrder: function (event) {
+  handleOrder: async function (event) {
     // 阻止元素 默认行为
     event.preventDefault();
-    let order = App.getCurrentOrder(event);
-
     if (Util.date.isDateFilled()) {
-      alert("订购成功");
+      App.order = App.getCurrentOrder(event);
+      $('#myModal').modal('show');
     } else {
       $('.alert').show();
     }
+  },
+
+  finalOrder: async function (event) {
+    // 阻止元素 默认行为
+    event.preventDefault();
+
+    // 获取到合约实例
+    // 处理订单
+    
+    let instance = await App.contracts.Travel.deployed();
+    let order = App.order;
+    await instance.initializeOrder(order.hotelName, order.roomType, order.fromDate, order.toDate, order.OTA, order.price);
   }
 };
 
