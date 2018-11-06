@@ -1,3 +1,4 @@
+//If you encounter 'module undefined error' when running this dapp on Windows, you may try to rename this file to 'truffle-config.js'.
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // for more about customizing your Truffle configuration!
