@@ -2,6 +2,8 @@ App = {
   web3Provider: null,
   contracts: {},
   account: "",
+  oldName: "",
+  newName: "",
 
   init: function () {
     return App.initWeb3();
@@ -45,12 +47,15 @@ App = {
 
   setName: function () {
     $('#myModal').modal('show');
+    let newName = $('#newName').val();
+    App.newName = newName;
+    $('#old_name').text(App.oldName);
+    $('#new_name').text(App.newName);
   },
 
   finalName: async function () {
-    let newName = $('#newName').val();
     let instance = await App.contracts.Travel.deployed();
-    await instance.changeUserName(newName);
+    await instance.changeUserName(App.newName);
     console.log("设置新用户名成功");
     window.location.reload();
   },
@@ -62,6 +67,8 @@ App = {
     // 加载原先用户名
     let instance = await App.contracts.Travel.deployed();
     let name = await instance.getUserName.call();
+
+    App.oldName = name;
 
     if (name == "") {
       // 如果未设置姓名

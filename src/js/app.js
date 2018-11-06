@@ -93,7 +93,6 @@ App = {
 
     let tds = $(event.target).parent().prevAll();
     order.roomType = $(tds[1]).text();
-    console.log($(tds[0]).text());
     order.roomPrice = $(tds[0]).text().substring(1);
     order.hotelName = $('#hotel_name').text();
     order.OTA = $('#OTAImg').attr("data-OTA");
@@ -114,6 +113,9 @@ App = {
     if (Util.date.isDateFilled()) {
       App.order = App.getCurrentOrder(event);
       $('#myModal').modal('show');
+      let order = App.order;
+      let order_info = order.hotelName + "&nbsp;&nbsp;&nbsp;&nbsp;" + order.roomType + order.fromDate + " 到 " + order.toDate;
+      $('#order_info').html(order_info);
     } else {
       $('.alert').show();
     }

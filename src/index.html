@@ -36,13 +36,17 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="myModalLabel">提示</h5>
+            <img src="./images/metamask.png" id="metamaskLogo">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <strong>当您点击确认后，将弹出一个Metamask窗口.这个窗口将帮你设定好gas limit和price, 请您放心使用默认设置。</p>
-            <strong>链上交易不可逆哦，请再次确认您的订单信息~</p>
+            <p class="font-weight-bold">当您点击确认后，将弹出一个Metamask窗口.这个窗口将帮你设定好gas limit和price, 您可以放心使用其默认设置。</p>
+            <p class="font-weight-bold">链上交易不可逆哦，请再次确认您的订单信息~</p>
+            <span class="font-weight-bold">订单信息: </span><br><br>
+            <p id="order_info"></p>
+          
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>

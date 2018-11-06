@@ -79,15 +79,15 @@ App = {
         order.find('.collapse').attr('aria-labelledby', 'heading' + i);
         order.find('.collapse').attr('id', 'collapse' + i);
 
-        
-
         order.find('button').text(orderRoom[0]).attr("data-target", '#collapse' + i);
       
-
         order.find('#order_time').text(new Date(orderInfo[0].toNumber() * 1000).toLocaleString());
         order.find('#OTA').text(orderInfo[1]);
-        order.find('#state').text(orderInfo[2]);
-
+        console.log(orderInfo[2])
+        if (orderInfo[2] == 'initialization') {
+          order.find('#state').text("确认中");
+        }
+       
         order.find('#room_type').text(orderRoom[1]);
         order.find('#from_date').text(orderRoom[2]);
         order.find('#to_date').text(orderRoom[3]);

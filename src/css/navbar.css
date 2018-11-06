@@ -11,6 +11,17 @@
 
 #myModal {
     top: 200px;
+
+}
+
+.modal-body {
+    color: black;
+}
+
+#metamaskLogo {
+    width: 35px;
+    margin-left: 10px;
+    margin-top: 3px;
 }
 
 
