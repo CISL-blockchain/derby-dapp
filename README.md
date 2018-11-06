@@ -3,6 +3,7 @@ A dapp for the flow of data in the Travel.
 ## Usage
 You should have truffle、git、ganache、node.js、metamask installed.
 <hr>
+
 1. Clone the repo.
 
 ```
