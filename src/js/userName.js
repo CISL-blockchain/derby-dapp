@@ -24,12 +24,13 @@ App = {
     web3.eth.getCoinbase(function(err, account) {
       if (err === null) {
         App.account = account;
+        console.log("当前账户: " + App.account);
         $("#accountAddress").html("Your Account: " + account);
       }
+      App.initContract();
     });
 
 
-    return App.initContract();
   },
 
   initContract: async function () {
@@ -65,20 +66,17 @@ App = {
 
   finalName: async function () {
     let instance = await App.contracts.Travel.deployed();
-    await instance.changeUserName(App.newName);
+    await instance.changeUserName(App.newName, {from: App.account});
     console.log("设置新用户名成功");
     window.location.reload();
   },
 
   renderName: async function () {
 
-    $("#accountAddress").html("Your Account: " + App.account);
-
-
     // 加载原先用户名
     let instance = await App.contracts.Travel.deployed();
-    let name = await instance.getUserName.call();
-
+    let name = await instance.getUserName({from: App.account});
+    console.log("智能合约取回的名字 ", name);
     App.oldName = name;
 
     if (name == "") {

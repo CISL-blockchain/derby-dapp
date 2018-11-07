@@ -58,7 +58,15 @@ App = {
     }
     web3 = new Web3(App.web3Provider);
 
-    return App.initContract();
+     // 加载账户数据
+     web3.eth.getCoinbase(function(err, account) {
+      if (err === null) {
+        App.account = account;
+        console.log("当前账户: " + App.account);
+      }
+      App.initContract();
+    });
+
   },
 
   initContract: async function () {
@@ -131,7 +139,7 @@ App = {
     
     let instance = await App.contracts.Travel.deployed();
     let order = App.order;
-    await instance.initializeOrder(order.hotelName, order.roomType, order.fromDate, order.toDate, order.OTA, order.price);
+    await instance.initializeOrder(order.hotelName, order.roomType, order.fromDate, order.toDate, order.OTA, order.price, {from: App.account});
   }
 };
 

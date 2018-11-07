@@ -23,9 +23,10 @@ App = {
         App.account = account;
         $("#accountAddress").html("Your Account: " + account);
       }
+      App.initContract();
     });
 
-    return App.initContract();
+   
   },
 
   initContract: async function () {
@@ -51,8 +52,9 @@ App = {
 
   // 渲染姓名
   renderName: async function (instance) {
-    let name = await instance.getUserName.call();
-
+    let name = await instance.getUserName({from: App.account});
+    console.log("智能合约取回的名字 ", name);
+    
     if (name == "") {
       // 如果未设置姓名
       $('#rawName').text("还未设置过姓名哦~");
@@ -67,7 +69,7 @@ App = {
   // 渲染订单
   renderOrders: async function (instance) {
 
-    let ordersCount = await instance.getUserOrdersCount.call();
+    let ordersCount = await instance.getUserOrdersCount.call({from: App.account});
     // 智能合约返回的是big number类型，用tonumber转化为数字
     ordersCount = ordersCount.toNumber();
     
@@ -76,8 +78,8 @@ App = {
 
     // 渲染每个订单
     for (let i = 0; i < ordersCount; i++) {
-      let orderInfo = await instance.getUserOrdersInfo(i, web3.eth.coinbase);
-      let orderRoom = await instance.getUserOrdersRoom(i, web3.eth.coinbase);
+      let orderInfo = await instance.getUserOrdersInfo(i, App.account);
+      let orderRoom = await instance.getUserOrdersRoom(i, App.account);
     
         let order = $('#user_order_template');
     

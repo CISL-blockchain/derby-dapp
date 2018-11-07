@@ -19,7 +19,15 @@ App = {
         }
         web3 = new Web3(App.web3Provider);
 
-        return App.initContract();
+         // 加载账户数据
+        web3.eth.getCoinbase(function(err, account) {
+            if (err === null) {
+                App.account = account;
+                console.log("当前账户: " + App.account);
+                $("#accountAddress").html("Your Account: " + account);
+            }
+            App.initContract();
+        });
     },
 
     initContract: async function () {
@@ -35,7 +43,7 @@ App = {
 
     render: async function () {
 
-        $("#accountAddress").html("Your Account: " + web3.eth.coinbase);
+        
 
         // 加载合约
         let instance = await App.contracts.Travel.deployed();
@@ -49,14 +57,14 @@ App = {
     },
 
     renderAccountType: async function (instance) {
-        let accountType = await instance.getAccountType();
+        let accountType = await instance.getAccountType({from: App.account});
         App.accountType = accountType;
         $('#accountType').text(accountType);
     },
 
     // 渲染姓名
     renderName: async function (instance) {
-        let name = await instance.getUserName.call();
+        let name = await instance.getUserName({from: App.account});
 
         if (name == "") {
             // 如果未设置姓名
@@ -111,15 +119,15 @@ App = {
     // 渲染订单
     renderOrders: async function (instance) {
 
-        let ordersCount = await instance.getPendingPoolCount.call();
+        let ordersCount = await instance.getPendingPoolCount({from: App.account});
         // 智能合约返回的是big number类型，用tonumber转化为数字
         ordersCount = ordersCount.toNumber();
         console.log("pending pool总订单数:" + ordersCount);
 
         // 渲染每个订单
         for (let i = 0; i < ordersCount; i++) {
-            let orderInfo = await instance.getPendingPoolInfo(i);
-            let orderRoom = await instance.getPendingPoolRoom(i);
+            let orderInfo = await instance.getPendingPoolInfo(i, {from: App.account});
+            let orderRoom = await instance.getPendingPoolRoom(i, {from: App.account});
             console.log(orderInfo)
             if (App.accountType == "OTA" && orderInfo[2] == "initialization") {
                 App.insertOrders(orderInfo, orderRoom,i);
@@ -159,7 +167,7 @@ App = {
         }else if(App.accountType == "Hotel") {
             toComfirmState = "Hotelconfirmed";
         }
-        instance.setPendingPoolRoom(App.nowConfirmOrderIndex, toComfirmState);
+        instance.setPendingPoolRoom(App.nowConfirmOrderIndex, toComfirmState, {from: App.account});
 
     }
 }
