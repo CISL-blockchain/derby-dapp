@@ -4,6 +4,7 @@ App = {
   account: "",
   oldName: "",
   newName: "",
+  
 
   init: function () {
     return App.initWeb3();
@@ -18,6 +19,15 @@ App = {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
     web3 = new Web3(App.web3Provider);
+
+    // 加载账户数据
+    web3.eth.getCoinbase(function(err, account) {
+      if (err === null) {
+        App.account = account;
+        $("#accountAddress").html("Your Account: " + account);
+      }
+    });
+
 
     return App.initContract();
   },
@@ -62,7 +72,8 @@ App = {
 
   renderName: async function () {
 
-    $("#accountAddress").html("Your Account: " + web3.eth.coinbase);
+    $("#accountAddress").html("Your Account: " + App.account);
+
 
     // 加载原先用户名
     let instance = await App.contracts.Travel.deployed();
@@ -85,5 +96,6 @@ App = {
 $(function () {
   $(window).load(function () {
     App.init();
+   
   });
 });

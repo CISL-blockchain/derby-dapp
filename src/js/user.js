@@ -17,6 +17,14 @@ App = {
     }
     web3 = new Web3(App.web3Provider);
 
+    // 加载账户数据
+    web3.eth.getCoinbase(function(err, account) {
+      if (err === null) {
+        App.account = account;
+        $("#accountAddress").html("Your Account: " + account);
+      }
+    });
+
     return App.initContract();
   },
 
@@ -32,8 +40,6 @@ App = {
   },
   
   render: async function () {
-
-    $("#accountAddress").html("Your Account: " + web3.eth.coinbase);
 
     // 加载合约
     let instance = await App.contracts.Travel.deployed();
@@ -70,8 +76,8 @@ App = {
 
     // 渲染每个订单
     for (let i = 0; i < ordersCount; i++) {
-      let orderInfo = await instance.getUserOrdersInfo(i);
-      let orderRoom = await instance.getUserOrdersRoom(i);
+      let orderInfo = await instance.getUserOrdersInfo(i, web3.eth.coinbase);
+      let orderRoom = await instance.getUserOrdersRoom(i, web3.eth.coinbase);
     
         let order = $('#user_order_template');
     
@@ -83,9 +89,19 @@ App = {
       
         order.find('#order_time').text(new Date(orderInfo[0].toNumber() * 1000).toLocaleString());
         order.find('#OTA').text(orderInfo[1]);
-        console.log(orderInfo[2])
+        console.log(orderInfo[2]);
+
+        // 判断订单状态
         if (orderInfo[2] == 'initialization') {
           order.find('#state').text("确认中");
+        } else if (orderInfo[2] == 'OTAconfirmed') {
+          order.find('#state').text("OTA已确认");
+        } else if (orderInfo[2] == 'Derbyconfirmed') {
+          order.find('#state').text("Derby已确认");
+        } else {
+          // orderInfo[2] == 'HotelConfirmed'
+          order.find('#state').text("已通过");
+          order.find('#state').attr("class", "badge badge-pill badge-success");
         }
        
         order.find('#room_type').text(orderRoom[1]);

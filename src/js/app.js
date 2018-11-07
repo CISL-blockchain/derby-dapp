@@ -2,6 +2,7 @@ App = {
   web3Provider: null,
   contracts: {},
   order: {},
+  account: "",
 
   init: async function () {
     // 初始化时间选择器
