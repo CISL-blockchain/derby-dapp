@@ -82,7 +82,7 @@ App = {
   // 从合约中获取姓名并加载
   renderName: async function () {
     let instance = await App.contracts.Travel.deployed();
-    let userName = await instance.getUserName.call();
+    let userName = await instance.getUserName({from: App.account});
     if (userName == "") {
       userName = "去我的设置里设置姓名~"
     }
@@ -140,6 +140,7 @@ App = {
     let instance = await App.contracts.Travel.deployed();
     let order = App.order;
     await instance.initializeOrder(order.hotelName, order.roomType, order.fromDate, order.toDate, order.OTA, order.price, {from: App.account});
+    window.location.reload();
   }
 };
 

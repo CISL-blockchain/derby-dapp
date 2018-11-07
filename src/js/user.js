@@ -96,10 +96,13 @@ App = {
         // 判断订单状态
         if (orderInfo[2] == 'initialization') {
           order.find('#state').text("确认中");
+          order.find('#state').attr("class", "badge badge-pill badge-danger");
         } else if (orderInfo[2] == 'OTAconfirmed') {
           order.find('#state').text("OTA已确认");
+          order.find('#state').attr("class", "badge badge-pill badge-warning");
         } else if (orderInfo[2] == 'Derbyconfirmed') {
           order.find('#state').text("Derby已确认");
+          order.find('#state').attr("class", "badge badge-pill badge-info");
         } else {
           // orderInfo[2] == 'HotelConfirmed'
           order.find('#state').text("已通过");

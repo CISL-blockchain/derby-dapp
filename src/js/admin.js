@@ -58,6 +58,9 @@ App = {
 
     renderAccountType: async function (instance) {
         let accountType = await instance.getAccountType({from: App.account});
+        if(accountType == "") {
+            accountType = "用户";
+        }
         App.accountType = accountType;
         $('#accountType').text(accountType);
     },
@@ -164,11 +167,11 @@ App = {
             toComfirmState = "OTAconfirmed";
         } else if(App.accountType == "Derby") {
             toComfirmState = "Derbyconfirmed";
-        }else if(App.accountType == "Hotel") {
+        } else if(App.accountType == "Hotel") {
             toComfirmState = "Hotelconfirmed";
         }
-        instance.setPendingPoolRoom(App.nowConfirmOrderIndex, toComfirmState, {from: App.account});
-
+        await instance.setPendingPoolRoom(App.nowConfirmOrderIndex, toComfirmState, {from: App.account});
+        window.location.reload();
     }
 }
 

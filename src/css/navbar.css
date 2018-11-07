@@ -24,7 +24,15 @@
     margin-top: 3px;
 }
 
+#my_account a {
+    margin-right: 20px;
+}
+
 
 
 body { padding-top: 120px; }
+
+.dropdown-menu {
+    margin-left: 160px;
+}
 
