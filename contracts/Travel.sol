@@ -40,9 +40,19 @@ contract Travel {
         address a = 0x71a8A338B01C5562Ce0790444E8369e3596822fb; // OTA
         address b = 0x86AC10D1E9fE47b3F073D22Adf1dE57fA5e96Ea9; // Derby
         address c = 0x4d0e16F644e06AbFb2035a5653230ace47B696E3; // Hotel
+        address a1 = 0x217EF0Bb41750955dA1fA1Ab50c1e5fe09998279; // mac-ota
+        address b1 = 0x47D36A5a7A1Db35310a72C04fB0256F70A006453;    // mac-derby
+        address c1 = 0x79a7A47806D2dfee07b42662C4F65816461d14d2;    // hotel
+
+
+
         accountType[a] = "OTA";
         accountType[b] = "Derby";
         accountType[c] = "Hotel";
+
+        accountType[a1] = "OTA";
+        accountType[b1] = "Derby";
+        accountType[c1] = "Hotel";
     }
 
     // 待确认交易池
@@ -129,7 +139,7 @@ contract Travel {
         }
     } 
 
-    // 从pendingRoom里面删掉该订单
+    // 从pendingRoom里面删掉该订单 所以最后hotel确认需要消耗更多的gas,因为这个函数
     // Move the last element to the deleted spot.
     // Delete the last element, then correct the length.
     function _burn(uint index) internal {

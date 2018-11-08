@@ -95,18 +95,14 @@ App = {
 
         // 判断订单状态
         if (orderInfo[2] == 'initialization') {
-          order.find('#state').text("确认中");
-          order.find('#state').attr("class", "badge badge-pill badge-danger");
+          order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
         } else if (orderInfo[2] == 'OTAconfirmed') {
-          order.find('#state').text("OTA已确认");
-          order.find('#state').attr("class", "badge badge-pill badge-warning");
+          order.find('#confirm_2').attr("class", "badge badge-pill badge-warning");
         } else if (orderInfo[2] == 'Derbyconfirmed') {
-          order.find('#state').text("Derby已确认");
-          order.find('#state').attr("class", "badge badge-pill badge-info");
+          order.find('#confirm_3').attr("class", "badge badge-pill badge-info");
         } else {
           // orderInfo[2] == 'HotelConfirmed'
-          order.find('#state').text("已通过");
-          order.find('#state').attr("class", "badge badge-pill badge-success");
+          order.find('#confirm_4').attr("class", "badge badge-pill badge-success");
         }
        
         order.find('#room_type').text(orderRoom[1]);
