@@ -1,13 +1,13 @@
 [
   {
-    "name": "锦江之星品尚(上海张江高科园区酒店)",
-    "location": "上海浦东新区华佗路800号 (浦东张江)",
+    "name": "纽约市中心希尔顿酒店",
+    "location": "美洲大道1335号，纽约",
     "imageUrl":"../images/hotel.jpg",
     "roomType": [
       {
         "type": "标准间",
         "imageUrl": "../images/standardRoom.jpg",
-        "price": "270"
+        "price": "224"
       },
       {
         "type": "双人房",
@@ -20,9 +20,9 @@
         "price": "350"
       },
       {
-        "type": "总统套房",
+        "type": "套房",
         "imageUrl": "../images/superRoom.jpg",
-        "price": "1350"
+        "price": "950"
       }
     ]
   }

@@ -31,7 +31,7 @@ App = {
       oneType.append(roomTypeImg)
       let roomTypeName = $('<td></td>').text(roomType[i].type);
       oneType.append(roomTypeName);
-      let roomTypePrice = $('<td></td>').text("¥" + roomType[i].price);
+      let roomTypePrice = $('<td></td>').text("$" + roomType[i].price);
       oneType.append(roomTypePrice);
       let roomTypeBtn = $('<td></td>');
       roomTypeBtn.append($('<button>').text("预定").attr(

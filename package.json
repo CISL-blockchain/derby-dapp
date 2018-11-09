@@ -1,6 +1,6 @@
 {
-  "name": "pet-shop",
-  "version": "1.0.0",
+  "name": "derby-dapp",
+  "version": "0.0.1",
   "description": "",
   "main": "truffle.js",
   "directories": {
