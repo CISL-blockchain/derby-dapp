@@ -97,12 +97,25 @@ App = {
         if (orderInfo[2] == 'initialization') {
           order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
         } else if (orderInfo[2] == 'OTAconfirmed') {
+          order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
           order.find('#confirm_2').attr("class", "badge badge-pill badge-warning");
+          order.find('#confirm_2').text("OTA已确认");
         } else if (orderInfo[2] == 'Derbyconfirmed') {
+          order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
+          order.find('#confirm_2').attr("class", "badge badge-pill badge-warning");
           order.find('#confirm_3').attr("class", "badge badge-pill badge-info");
+          order.find('#confirm_2').text("OTA已确认");
+          order.find('#confirm_3').text("Derby已确认");
         } else {
           // orderInfo[2] == 'HotelConfirmed'
+          order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
+          order.find('#confirm_2').attr("class", "badge badge-pill badge-warning");
+          order.find('#confirm_3').attr("class", "badge badge-pill badge-info");
           order.find('#confirm_4').attr("class", "badge badge-pill badge-success");
+          order.find('#confirm_1').text("已确认");
+          order.find('#confirm_2').text("OTA已确认");
+          order.find('#confirm_3').text("Derby已确认");
+          order.find('#confirm_4').text("Hotel已确认");
         }
        
         order.find('#room_type').text(orderRoom[1]);
