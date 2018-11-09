@@ -42,7 +42,7 @@ contract Travel {
         address c = 0x4d0e16F644e06AbFb2035a5653230ace47B696E3; // Hotel
         address a1 = 0x217EF0Bb41750955dA1fA1Ab50c1e5fe09998279; // mac-ota
         address b1 = 0x47D36A5a7A1Db35310a72C04fB0256F70A006453;    // mac-derby
-        address c1 = 0x79a7A47806D2dfee07b42662C4F65816461d14d2;    // hotel
+        address c1 = 0x79a7A47806D2dfee07b42662C4F65816461d14d2;    // mac-hotel
 
 
 
