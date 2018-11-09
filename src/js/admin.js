@@ -94,7 +94,7 @@ App = {
         order.find('#OTA').text(orderInfo[1]);
         console.log(orderInfo[2]);
 
-        order.find("#set_confirmed").attr("data-index", idx);
+        order.find(".set_confirmed").attr("data-index", idx);
 
         // 判断订单状态
         if (orderInfo[2] == 'initialization') {
@@ -131,7 +131,6 @@ App = {
         for (let i = 0; i < ordersCount; i++) {
             let orderInfo = await instance.getPendingPoolInfo(i, {from: App.account});
             let orderRoom = await instance.getPendingPoolRoom(i, {from: App.account});
-            console.log(orderInfo)
             if (App.accountType == "OTA" && orderInfo[2] == "initialization") {
                 App.insertOrders(orderInfo, orderRoom,i);
             } else if (App.accountType == "Derby" && orderInfo[2] == "OTAconfirmed") {
@@ -146,10 +145,10 @@ App = {
     },
 
     bindEvents: function() {
-        $('#set_confirmed').click(function (event) {
-            console.log("fuck");
+        $('.set_confirmed').click(function (event) {
             event.preventDefault();
             App.nowConfirmOrderIndex = $(event.target).attr("data-index");
+            console.log("fuck");
             $('#myModal').modal('show');
         });
 
@@ -170,6 +169,7 @@ App = {
         } else if(App.accountType == "Hotel") {
             toComfirmState = "Hotelconfirmed";
         }
+        console.log(App.nowConfirmOrderIndex)
         await instance.setPendingPoolRoom(App.nowConfirmOrderIndex, toComfirmState, {from: App.account});
         window.location.reload();
     }

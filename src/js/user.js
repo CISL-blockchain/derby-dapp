@@ -81,7 +81,7 @@ App = {
       let orderInfo = await instance.getUserOrdersInfo(i, App.account);
       let orderRoom = await instance.getUserOrdersRoom(i, App.account);
     
-        let order = $('#user_order_template');
+        let order = $('#user_order_template').clone();
     
         order.find('.card-header').attr('id', 'heading' + i);
         order.find('.collapse').attr('aria-labelledby', 'heading' + i);
