@@ -36,21 +36,27 @@ contract Travel {
     mapping (address => string) public accountType; 
 
     constructor() public  { 
-        // 事先设定好几个账户
-        address a = 0x9963C328918892bd240B3c6d39e64dd05d17b942; // OTA
-        address b = 0xaB6d902741Cd54fe78b213a28aaBE551BB8294BE; // Derby
-        address c = 0x59bac92689BB60A452DAd0D168F6f1066f0045ab; // Hotel
+        // 事先设定好几个管理员账户
+        address xu-ota = 0x9963C328918892bd240B3c6d39e64dd05d17b942; // OTA
+        address xu-derby = 0xaB6d902741Cd54fe78b213a28aaBE551BB8294BE; // Derby
+        address xu-hotel = 0x59bac92689BB60A452DAd0D168F6f1066f0045ab; // Hotel
 
-        // address a = 0x71a8A338B01C5562Ce0790444E8369e3596822fb; // OTA
-        // address b = 0x86AC10D1E9fE47b3F073D22Adf1dE57fA5e96Ea9; // Derby
-        // address c = 0x4d0e16F644e06AbFb2035a5653230ace47B696E3; // Hotel
-        // address a1 = 0x217EF0Bb41750955dA1fA1Ab50c1e5fe09998279; // mac-ota
-        // address b1 = 0x47D36A5a7A1Db35310a72C04fB0256F70A006453;    // mac-derby
-        // address c1 = 0x79a7A47806D2dfee07b42662C4F65816461d14d2;    // mac-hotel
+        address liu-ota = 0x71a8A338B01C5562Ce0790444E8369e3596822fb; // OTA
+        address liu-derby = 0x86AC10D1E9fE47b3F073D22Adf1dE57fA5e96Ea9; // Derby
+        address liu-hotel = 0x4d0e16F644e06AbFb2035a5653230ace47B696E3; // Hotel
+        address liu-mac-ota = 0x217EF0Bb41750955dA1fA1Ab50c1e5fe09998279; // mac-ota
+        address liu-mac-derby = 0x47D36A5a7A1Db35310a72C04fB0256F70A006453;    // mac-derby
+        address liu-mac-hotel = 0x79a7A47806D2dfee07b42662C4F65816461d14d2;    // mac-hotel
         
-        accountType[a] = "OTA";
-        accountType[b] = "Derby";
-        accountType[c] = "Hotel";
+        accountType[xu-ota] = "OTA";
+        accountType[xu-derby] = "Derby";
+        accountType[xu-hotel] = "Hotel";
+        accountType[liu-ota] = "OTA";
+        accountType[liu-derby] = "Derby";
+        accountType[liu-hotel] = "Hotel";
+        accountType[liu-mac-ota] = "OTA";
+        accountType[liu-mac-derby] = "Derby";
+        accountType[liu-mac-hotel] = "Hotel";
     }
 
 
