@@ -37,26 +37,26 @@ contract Travel {
 
     constructor() public  { 
         // 事先设定好几个管理员账户
-        address xu-ota = 0x9963C328918892bd240B3c6d39e64dd05d17b942; // OTA
-        address xu-derby = 0xaB6d902741Cd54fe78b213a28aaBE551BB8294BE; // Derby
-        address xu-hotel = 0x59bac92689BB60A452DAd0D168F6f1066f0045ab; // Hotel
+        address xu_ota = 0x9963C328918892bd240B3c6d39e64dd05d17b942; // OTA
+        address xu_derby = 0xaB6d902741Cd54fe78b213a28aaBE551BB8294BE; // Derby
+        address xu_hotel = 0x59bac92689BB60A452DAd0D168F6f1066f0045ab; // Hotel
 
-        address liu-ota = 0x71a8A338B01C5562Ce0790444E8369e3596822fb; // OTA
-        address liu-derby = 0x86AC10D1E9fE47b3F073D22Adf1dE57fA5e96Ea9; // Derby
-        address liu-hotel = 0x4d0e16F644e06AbFb2035a5653230ace47B696E3; // Hotel
-        address liu-mac-ota = 0x217EF0Bb41750955dA1fA1Ab50c1e5fe09998279; // mac-ota
-        address liu-mac-derby = 0x47D36A5a7A1Db35310a72C04fB0256F70A006453;    // mac-derby
-        address liu-mac-hotel = 0x79a7A47806D2dfee07b42662C4F65816461d14d2;    // mac-hotel
+        address liu_ota = 0x71a8A338B01C5562Ce0790444E8369e3596822fb; // OTA
+        address liu_derby = 0x86AC10D1E9fE47b3F073D22Adf1dE57fA5e96Ea9; // Derby
+        address liu_hotel = 0x4d0e16F644e06AbFb2035a5653230ace47B696E3; // Hotel
+        address liu_mac_ota = 0x217EF0Bb41750955dA1fA1Ab50c1e5fe09998279; // mac-ota
+        address liu_mac_derby = 0x47D36A5a7A1Db35310a72C04fB0256F70A006453;    // mac-derby
+        address liu_mac_hotel = 0x79a7A47806D2dfee07b42662C4F65816461d14d2;    // mac-hotel
         
-        accountType[xu-ota] = "OTA";
-        accountType[xu-derby] = "Derby";
-        accountType[xu-hotel] = "Hotel";
-        accountType[liu-ota] = "OTA";
-        accountType[liu-derby] = "Derby";
-        accountType[liu-hotel] = "Hotel";
-        accountType[liu-mac-ota] = "OTA";
-        accountType[liu-mac-derby] = "Derby";
-        accountType[liu-mac-hotel] = "Hotel";
+        accountType[xu_ota] = "OTA";
+        accountType[xu_derby] = "Derby";
+        accountType[xu_hotel] = "Hotel";
+        accountType[liu_ota] = "OTA";
+        accountType[liu_derby] = "Derby";
+        accountType[liu_hotel] = "Hotel";
+        accountType[liu_mac_ota] = "OTA";
+        accountType[liu_mac_derby] = "Derby";
+        accountType[liu_mac_hotel] = "Hotel";
     }
 
 
