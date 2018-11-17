@@ -113,7 +113,6 @@
 
         <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordionExample">
           <div class="card-body" id="order_content">
-           
             <span class="entry font-weight-bold">房间类型: </span>
             <p id="room_type"></p>
             <span class="entry font-weight-bold">开始日期: </span>
@@ -131,5 +130,40 @@
 
       </div>
   </div>
+
+  <div id="Derby_order_template" style="display:none;">
+    <div class="card">
+      <div class="card-header" id="headinge">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed font-weight-bold" type="button" data-toggle="collapse" data-target="#collapse"
+            aria-expanded="false" aria-controls="collapse">
+          </button>
+          <span class="badge badge-pill badge-secondary" id="confirm_1">订单确认中</span>
+          <span class="badge badge-pill badge-secondary" id="confirm_2">OTA未确认</span>
+          <span class="badge badge-pill badge-secondary" id="confirm_3">Derby未确认</span>
+          <span class="badge badge-pill badge-secondary" id="confirm_4">Hotel未确认</span>
+        </h5>
+      </div>
+
+
+      <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordionExample">
+        <div class="card-body" id="order_content">           
+          <span class="entry font-weight-bold">房间类型: </span>
+          <p id="room_type"></p>
+          <span class="entry font-weight-bold">开始日期: </span>
+          <p id="from_date"></p>
+          <span class="entry font-weight-bold">离店日期: </span>
+          <p id="to_date"></p>
+          <span class="entry font-weight-bold">总价格: </span>
+          <p id="total_price"></p>
+          <span class="entry font-weight-bold">订购时间: </span>
+          <p id="order_time"></p>
+          <span class="entry font-weight-bold">订购平台: </span>
+          <p id="OTA"></p>
+        </div>
+      </div>
+
+    </div>
+</div>
 </body>
 </html>

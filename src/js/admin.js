@@ -42,9 +42,6 @@ App = {
     },
 
     render: async function () {
-
-        
-
         // 加载合约
         let instance = await App.contracts.Travel.deployed();
         App.renderName(instance);
@@ -62,7 +59,13 @@ App = {
             accountType = "用户";
         }
         App.accountType = accountType;
-        $('#accountType').text(accountType);
+
+        if (accountType == "Derby") {
+            $('#accountType').text(accountType + " 您可以看到所有订单的流转与状态");
+        } else {
+            $('#accountType').text(accountType);
+        }
+       
     },
 
     // 渲染姓名
@@ -82,7 +85,7 @@ App = {
     insertOrders: function (orderInfo, orderRoom, idx) {
 
         let orders = $('#accordionExample');
-        let order = $('#user_order_template');
+        let order = $('#user_order_template').clone();
 
         order.find('.card-header').attr('id', 'heading' + idx);
         order.find('.collapse').attr('aria-labelledby', 'heading' + idx);
@@ -96,27 +99,57 @@ App = {
 
         order.find(".set_confirmed").attr("data-index", idx);
 
-        // 判断订单状态
-        if (orderInfo[2] == 'initialization') {
-            order.find('#state').text("确认中");
-        } else if (orderInfo[2] == 'OTAconfirmed') {
-            order.find('#state').text("OTA已确认");
-        } else if (orderInfo[2] == 'Derbyconfirmed') {
-            order.find('#state').text("Derby已确认");
-        } else {
-            // orderInfo[2] == 'HotelConfirmed'
-            order.find('#state').text("已通过");
-            order.find('#state').attr("class", "badge badge-pill badge-success");
-        }
-
         order.find('#room_type').text(orderRoom[1]);
         order.find('#from_date').text(orderRoom[2]);
         order.find('#to_date').text(orderRoom[3]);
         order.find('#total_price').text(orderRoom[4].toNumber());
 
-
         orders.append(order.html());
 
+    },
+
+    // Derby页面的插入订单
+    InsertDerbyOrders: function(orderInfo, orderRoom, idx){
+        let orders = $('#accordionExample');
+        let order = $('#Derby_order_template').clone();
+    
+        order.find('.card-header').attr('id', 'heading' + idx);
+        order.find('.collapse').attr('aria-labelledby', 'heading' + idx);
+        order.find('.collapse').attr('id', 'collapse' + idx);
+
+        order.find('button').text(orderRoom[0]).attr("data-target", '#collapse' + idx);
+      
+        order.find('#order_time').text(new Date(orderInfo[0].toNumber() * 1000).toLocaleString());
+        order.find('#OTA').text(orderInfo[1]);
+ 
+
+        // 判断订单状态
+        if (orderInfo[2] == 'initialization') {
+          order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
+        } else if (orderInfo[2] == 'OTAconfirmed') {
+          order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
+          order.find('#confirm_2').attr("class", "badge badge-pill badge-warning");
+          order.find('#confirm_2').text("OTA已确认");
+          order.find('#confirm_3').attr("class", "badge badge-pill badge-info");
+          order.find('#confirm_3').text("Derby已确认");
+        } else {
+          // orderInfo[2] == 'HotelConfirmed'
+          order.find('#confirm_1').attr("class", "badge badge-pill badge-danger");
+          order.find('#confirm_2').attr("class", "badge badge-pill badge-warning");
+          order.find('#confirm_3').attr("class", "badge badge-pill badge-info");
+          order.find('#confirm_4').attr("class", "badge badge-pill badge-success");
+          order.find('#confirm_2').text("OTA已确认");
+          order.find('#confirm_3').text("Derby已确认");
+          order.find('#confirm_4').text("Hotel已确认");
+        }
+       
+        order.find('#room_type').text(orderRoom[1]);
+        order.find('#from_date').text(orderRoom[2]);
+        order.find('#to_date').text(orderRoom[3]);
+        order.find('#total_price').text(orderRoom[4].toNumber());
+
+        
+        orders.append(order.html());
     },
 
     // 渲染订单
@@ -133,9 +166,9 @@ App = {
             let orderRoom = await instance.getPendingPoolRoom(i, {from: App.account});
             if (App.accountType == "OTA" && orderInfo[2] == "initialization") {
                 App.insertOrders(orderInfo, orderRoom,i);
-            } else if (App.accountType == "Derby" && orderInfo[2] == "OTAconfirmed") {
-                App.insertOrders(orderInfo, orderRoom, i);
-            } else if (App.accountType == "Hotel" && orderInfo[2] == "Derbyconfirmed") {
+            } else if (App.accountType == "Derby") {
+                App.InsertDerbyOrders(orderInfo, orderRoom, i);
+            } else if (App.accountType == "Hotel" && orderInfo[2] == "OTAconfirmed") {
                 App.insertOrders(orderInfo, orderRoom, i);
             }
         }
@@ -164,9 +197,7 @@ App = {
         let toComfirmState = "";
         if (App.accountType == "OTA") {
             toComfirmState = "OTAconfirmed";
-        } else if(App.accountType == "Derby") {
-            toComfirmState = "Derbyconfirmed";
-        } else if(App.accountType == "Hotel") {
+        }  else if(App.accountType == "Hotel") {
             toComfirmState = "Hotelconfirmed";
         }
         console.log(App.nowConfirmOrderIndex)

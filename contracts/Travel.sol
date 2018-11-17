@@ -62,6 +62,8 @@ contract Travel {
 
     // 待确认交易池
     PendingOrder[] pendingPool;
+
+    
     
     // 改变用户姓名
     function changeUserName(string _name) public {
@@ -138,10 +140,10 @@ contract Travel {
         address _addr = pendingPool[_idx].userAddr;
         userInfo[ _addr].orders[_orderIndex].state = _state;
         // solidity只能用哈希值比较字符串
-        string memory s = "Hotelconfirmed";
-        if (keccak256(_state) == keccak256(s)) {
-            _burn(_idx);
-        }
+        // string memory s = "Hotelconfirmed";
+        // if (keccak256(_state) == keccak256(s)) {
+        //     _burn(_idx);
+        // }
     } 
 
     // 从pendingRoom里面删掉该订单 所以最后hotel确认需要消耗更多的gas,因为这个函数
