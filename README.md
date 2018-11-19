@@ -1,4 +1,4 @@
-# Travel-dapp
+# Derby-dapp
 A dapp for the flow of data in the Travel.
 ## Dependencies
 You should have truffle、git、ganache、node.js、metamask installed.
