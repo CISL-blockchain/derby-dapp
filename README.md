@@ -1,9 +1,15 @@
 # Travel-dapp
 A dapp for the flow of data in the Travel.
-## Usage
+## Dependencies
 You should have truffle、git、ganache、node.js、metamask installed.
+```
+Truffle: https://truffleframework.com/truffle, truffle is the most popular development framework for Ethereum.
+Ganache: https://truffleframework.com/ganache, this provides local Ethereum network and accounts for test.
+Metamask: This is a Chrome extension working as Ethereum wallets, you can import/delete accounts, confirm transactions and manage your balance here.
+```
 <hr>
 
+## Usage
 1. Clone the repo.
 
 ```
