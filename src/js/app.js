@@ -69,14 +69,15 @@ App = {
 
   },
 
-  initContract: async function () {
-    let data = await $.getJSON('Travel.json');
-    App.contracts.Travel = TruffleContract(data);
-    // Set the provider for our contract
-    App.contracts.Travel.setProvider(App.web3Provider);
-    // 渲染姓名
-    App.renderName();
-    console.log("合约加载完成");
+  initContract: function () {
+    let data = $.getJSON('Travel.json', function(data){
+      App.contracts.Travel = TruffleContract(data);
+      // Set the provider for our contract
+      App.contracts.Travel.setProvider(App.web3Provider);
+      // 渲染姓名
+      App.renderName();
+    });
+   
   },
 
   // 从合约中获取姓名并加载
